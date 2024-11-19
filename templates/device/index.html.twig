@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Device index{% endblock %}
+
+{% block body %}
+    <h1>Device index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sn</th>
+                <th>Category</th>
+                <th>Model</th>
+                <th>Contract</th>
+                <th>DateAchat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for device in devices %}
+            <tr>
+                <td>{{ device.id }}</td>
+                <td>{{ device.sn }}</td>
+                <td>{{ device.category }}</td>
+                <td>{{ device.model }}</td>
+                <td>{{ device.contract }}</td>
+                <td>{{ device.dateAchat ? device.dateAchat|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_device_show', {'id': device.id}) }}">show</a>
+                    <a href="{{ path('app_device_edit', {'id': device.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_device_new') }}">Create new</a>
+{% endblock %}

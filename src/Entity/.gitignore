@@ -1,0 +1,9 @@
+/vendor/
+/var/
+/node_modules/
+.env
+.env.local
+.env.*.local
+/public/bundles/
+/public/build/
+/config/secrets/*/dev/
